@@ -5,8 +5,8 @@
 //  Jean Goulet 2017
 //
 //  Devoir fait par
-//     Coéquipier 1 :
-//     Coéquipier 2 :
+//     Coéquipier 1 : Gabriel Dumont-Hétu
+//     Coéquipier 2 : Bruno Pouliot
 //
 
 #ifndef SkipList_set2_h
