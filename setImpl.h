@@ -19,7 +19,17 @@ template <typename TYPE>
 set<TYPE>::set(const set<TYPE>& src)
     : set()
 {
-	// TODO: 01 set(const set<TYPE>& src)
+
+	iterator it = src.begin();
+	while (it != src.end()) {
+		// Complexité de O(n log n)
+		// TODO: 999 Améliorer l'insertion des éléments initiaux
+		// Peut être amélioré en devenant O(n) en admettant que
+		// les éléments de la skip_list initiale sont déjà dans l'ordre,
+		// donc en ajoutant des éléments directement à la fin.
+		this->insert(*it);
+		++it;
+	}
 }
 
 template <typename TYPE>
