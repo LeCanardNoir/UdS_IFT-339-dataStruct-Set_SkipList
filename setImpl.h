@@ -35,7 +35,10 @@ set<TYPE>::set(const set<TYPE>& src)
 template <typename TYPE>
 set<TYPE>::~set()
 {
-	// TODO: 02 ~set() faire le destructeur
+	clear();
+	cellule* apres = m_avant->m_prec[0];
+	delete apres;
+	delete m_avant;
 }
 
 /////////////////////////////////////////////////////////////////
