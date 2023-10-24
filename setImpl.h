@@ -73,6 +73,15 @@ template <typename TYPE>
 typename set<TYPE>::iterator set<TYPE>::upper_bound(const TYPE& x)
 {
 	// TODO: 03 upper_bound(const TYPE& x)
+	cellule* c = m_debut;
+	size_t k = m_debut->m_suiv.size();
+	for (size_t i = k - 1; i >= 0; i--) {
+		while (!(x < c->m_suiv[i].val)) {
+			c = c->m_suiv[i];
+		}
+	}
+	iterator it = iterator(c->m_suiv[0]);
+	return it;
 }
 
 /////////////////////////////////////////////////////////////////
