@@ -19,12 +19,13 @@ template <typename TYPE>
 set<TYPE>::set(const set<TYPE>& src)
     : set()
 {
-	// TODO: set(const set<TYPE>& src)
+	// TODO: 01 set(const set<TYPE>& src)
 }
 
 template <typename TYPE>
 set<TYPE>::~set()
 {
+	// TODO: 02 ~set() faire le destructeur
 }
 
 /////////////////////////////////////////////////////////////////
@@ -34,7 +35,7 @@ set<TYPE>::~set()
 template <typename TYPE>
 typename set<TYPE>::iterator set<TYPE>::find(const TYPE& x)
 {
-	// TODO: find(const TYPE& x)
+	// TODO: 04 find(const TYPE& x)
 }
 
 // lower_bound
@@ -57,7 +58,7 @@ typename set<TYPE>::iterator set<TYPE>::lower_bound(const TYPE& t)
 template <typename TYPE>
 typename set<TYPE>::iterator set<TYPE>::upper_bound(const TYPE& x)
 {
-	// TODO: upper_bound(const TYPE& x)
+	// TODO: 03 upper_bound(const TYPE& x)
 }
 
 /////////////////////////////////////////////////////////////////
@@ -67,7 +68,7 @@ typename set<TYPE>::iterator set<TYPE>::upper_bound(const TYPE& x)
 template <typename TYPE>
 size_t set<TYPE>::erase(const TYPE& VAL)
 {
-	// TODO: erase(const TYPE& VAL)
+	// TODO: 05 erase(const TYPE& VAL)
 }
 
 // erase(it)
@@ -76,7 +77,7 @@ size_t set<TYPE>::erase(const TYPE& VAL)
 template <typename TYPE>
 typename set<TYPE>::iterator set<TYPE>::erase(iterator it)
 {
-	// TODO: erase(iterator it)
+	// TODO: 06 erase(iterator it) 
 }
 
 #endif
