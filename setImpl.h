@@ -58,10 +58,10 @@ typename set<TYPE>::iterator set<TYPE>::find(const TYPE& x)
 template <typename TYPE>
 typename set<TYPE>::iterator set<TYPE>::lower_bound(const TYPE& t)
 {
-	cellule* c = m_debut;
-	size_t k = m_debut->m_suiv.size();
+	cellule* c = m_avant;
+	size_t k = m_avant->m_suiv.size();
 	for (size_t i = k - 1; i >= 0; i--) {
-		while (c->m_suiv[i].val < x) {
+		while (c->m_suiv[i].val < t) {
 			c = c->m_suiv[i];
 		}
 	}
@@ -73,8 +73,8 @@ template <typename TYPE>
 typename set<TYPE>::iterator set<TYPE>::upper_bound(const TYPE& x)
 {
 	// TODO: 03 upper_bound(const TYPE& x)
-	cellule* c = m_debut;
-	size_t k = m_debut->m_suiv.size();
+	cellule* c = m_avant;
+	size_t k = m_avant->m_suiv.size();
 	for (size_t i = k - 1; i >= 0; i--) {
 		while (!(x < c->m_suiv[i].val)) {
 			c = c->m_suiv[i];
