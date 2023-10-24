@@ -60,8 +60,15 @@ typename set<TYPE>::iterator set<TYPE>::lower_bound(const TYPE& t)
 {
 	cellule* c = m_avant;
 	size_t k = m_avant->m_suiv.size();
-	for (size_t i = k - 1; i >= 0; i--) {
-		while (c->m_suiv[i].val < t) {
+	for (int i = k - 1; i >= 0; i--) {
+		//cellule* c->m_suiv[i]
+		int tailleSuivant = c->m_suiv.size();
+		bool pasNull = (c->m_suiv[i])->m_contenu;
+		bool valeurPlusPetite = false;
+		if(pasNull)
+			valeurPlusPetite = *((c->m_suiv[i])->m_contenu) < t;
+
+		while (pasNull && valeurPlusPetite) {
 			c = c->m_suiv[i];
 		}
 	}
@@ -75,7 +82,7 @@ typename set<TYPE>::iterator set<TYPE>::upper_bound(const TYPE& x)
 	// TODO: 03 upper_bound(const TYPE& x)
 	cellule* c = m_avant;
 	size_t k = m_avant->m_suiv.size();
-	for (size_t i = k - 1; i >= 0; i--) {
+	for (int i = k - 1; i >= 0; i--) {
 		while (!(x < c->m_suiv[i].val)) {
 			c = c->m_suiv[i];
 		}
