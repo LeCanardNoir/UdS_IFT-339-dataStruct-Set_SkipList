@@ -80,7 +80,7 @@ typename set<TYPE>::iterator set<TYPE>::upper_bound(const TYPE& x)
 			c = c->m_suiv[i];
 		}
 	}
-	iterator it = iterator(c->m_suiv[0]);
+	iterator it = iterator(c);
 	return it;
 }
 
