@@ -5,8 +5,8 @@
 //  Jean Goulet 2017
 //
 //  Devoir fait par
-//     Coéquipier 1 : Gabriel Dumont-Hétu
-//     Coéquipier 2 : Bruno Pouliot
+//     Coï¿½quipier 1 : Gabriel Dumont-Hï¿½tu
+//     Coï¿½quipier 2 : Bruno Pouliot
 //
 
 #ifndef SkipList_set2_h
@@ -22,11 +22,11 @@ set<TYPE>::set(const set<TYPE>& src)
 
 	iterator it = src.begin();
 	while (it != src.end()) {
-		// Complexité de O(n log n)
-		// TODO: 999 Améliorer l'insertion des éléments initiaux
-		// Peut être amélioré en devenant O(n) en admettant que
-		// les éléments de la skip_list initiale sont déjà dans l'ordre,
-		// donc en ajoutant des éléments directement à la fin.
+		// Complexitï¿½ de O(n log n)
+		// TODO: 999 Amï¿½liorer l'insertion des ï¿½lï¿½ments initiaux
+		// Peut ï¿½tre amï¿½liorï¿½ en devenant O(n) en admettant que
+		// les ï¿½lï¿½ments de la skip_list initiale sont dï¿½jï¿½ dans l'ordre,
+		// donc en ajoutant des ï¿½lï¿½ments directement ï¿½ la fin.
 		this->insert(*it);
 		++it;
 	}
@@ -43,7 +43,7 @@ set<TYPE>::~set()
 
 /////////////////////////////////////////////////////////////////
 // find
-// localise un élément, retourne la fin si absent
+// localise un ï¿½lï¿½ment, retourne la fin si absent
 
 template <typename TYPE>
 typename set<TYPE>::iterator set<TYPE>::find(const TYPE& x)
@@ -58,14 +58,15 @@ typename set<TYPE>::iterator set<TYPE>::find(const TYPE& x)
 template <typename TYPE>
 typename set<TYPE>::iterator set<TYPE>::lower_bound(const TYPE& t)
 {
-    cellule *c = m_avant;
-    cellule *apres = m_avant->m_prec[0];
-	while(c->m_suiv[0] != apres)
-		if(*c->m_suiv[0]->m_contenu < t)
-			c = c->m_suiv[0];
-		else
-			break;
-	return iterator(c->m_suiv[0]);
+	cellule* c = m_debut;
+	size_t k = m_debut->m_suiv.size();
+	for (size_t i = k - 1; i >= 0; i--) {
+		while (c->m_suiv[i].val < x) {
+			c = c->m_suiv[i];
+		}
+	}
+	iterator it = iterator(c->m_suiv[0]);
+	return it;
 }
 
 template <typename TYPE>
