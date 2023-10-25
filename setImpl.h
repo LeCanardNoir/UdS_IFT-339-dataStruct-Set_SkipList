@@ -5,13 +5,12 @@
 //  Jean Goulet 2017
 //
 //  Devoir fait par
-//     Co�quipier 1 : Gabriel Dumont-H�tu
-//     Co�quipier 2 : Bruno Pouliot
+//     Coéquipier 1 : Gabriel Dumont-Hétu
+//     Coéquipier 2 : Bruno Pouliot
 //
 
 #ifndef SkipList_set2_h
 #define SkipList_set2_h
-#include <iostream>
 
 /////////////////////////////////////////////////////////////////
 // copieur et destructeur de liste
@@ -23,11 +22,11 @@ set<TYPE>::set(const set<TYPE>& src)
 
 	iterator it = src.begin();
 	while (it != src.end()) {
-		// Complexit� de O(n log n)
-		// TODO: 999 Am�liorer l'insertion des �l�ments initiaux
-		// Peut �tre am�lior� en devenant O(n) en admettant que
-		// les �l�ments de la skip_list initiale sont d�j� dans l'ordre,
-		// donc en ajoutant des �l�ments directement � la fin.
+		// Complexité de O(n log n)
+		// TODO: 999 Améliorer l'insertion des éléments initiaux
+		// Peut étre amélioré en devenant O(n) en admettant que
+		// les éléments de la skip_list initiale sont déjé dans l'ordre,
+		// donc en ajoutant des éléments directement é la fin.
 		this->insert(*it);
 		++it;
 	}
@@ -44,7 +43,7 @@ set<TYPE>::~set()
 
 /////////////////////////////////////////////////////////////////
 // find
-// localise un �l�ment, retourne la fin si absent
+// localise un élément, retourne la fin si absent
 
 template <typename TYPE>
 typename set<TYPE>::iterator set<TYPE>::find(const TYPE& x)
@@ -94,7 +93,7 @@ typename set<TYPE>::iterator set<TYPE>::upper_bound(const TYPE& x)
 	cellule* c = m_avant;
 	size_t k = m_avant->m_suiv.size();
 	for (int i = k - 1; i >= 0; i--) {
-		while (!(x < c->m_suiv[i].val)) {
+		while (!(x < *(c->m_suiv[i]->m_contenu))) {
 			c = c->m_suiv[i];
 		}
 	}
@@ -109,7 +108,7 @@ typename set<TYPE>::iterator set<TYPE>::upper_bound(const TYPE& x)
 template <typename TYPE>
 size_t set<TYPE>::erase(const TYPE& VAL)
 {
-	// TODO: 05 erase(const TYPE& VAL)
+	// DONE: 05 erase(const TYPE& VAL)
 	// find it
 	// erase(it);
 	iterator it = find(VAL);
@@ -126,7 +125,7 @@ size_t set<TYPE>::erase(const TYPE& VAL)
 template <typename TYPE>
 typename set<TYPE>::iterator set<TYPE>::erase(iterator it)
 {
-	// TODO: 06 erase(iterator it) 
+	// DONE: 06 erase(iterator it) 
 	cellule* cell = it.m_pointeur;
 	if (it != m_avant->m_prec[0]) {
 		size_t k = cell->m_prec.size();
