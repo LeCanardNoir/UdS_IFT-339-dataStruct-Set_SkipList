@@ -52,7 +52,7 @@ typename set<TYPE>::iterator set<TYPE>::find(const TYPE& x)
 	// return it or m_avant->m_prec[0]
 
 	iterator it = lower_bound(x);
-	if (it != m_avant->m_prec[0] && *it == x) 
+	if (it != m_avant->m_prec[0] && !(*it < x))
 		return it;
 
 	return m_avant->m_prec[0];
