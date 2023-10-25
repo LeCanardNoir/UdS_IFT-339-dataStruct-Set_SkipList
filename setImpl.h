@@ -66,11 +66,13 @@ typename set<TYPE>::iterator set<TYPE>::lower_bound(const TYPE& t)
 		bool pasNull = (c->m_suiv[i])->m_contenu;
 		bool valeurPlusPetite = false;
 		if(pasNull)
-			valeurPlusPetite = *((c->m_suiv[i])->m_contenu) < t;
+			valeurPlusPetite = *(c->m_suiv[i]->m_contenu) < t;
 
 		while (pasNull && valeurPlusPetite) {
 			c = c->m_suiv[i];
 			pasNull = (c->m_suiv[i])->m_contenu;
+			if(c->m_suiv[i]->m_contenu)
+				valeurPlusPetite = *(c->m_suiv[i]->m_contenu) < t;
 		}
 	}
 	iterator it = iterator(c->m_suiv[0]);
