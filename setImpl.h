@@ -89,7 +89,7 @@ typename set<TYPE>::iterator set<TYPE>::lower_bound(const TYPE& t)
 template <typename TYPE>
 typename set<TYPE>::iterator set<TYPE>::upper_bound(const TYPE& x)
 {
-	// TODO: 03 À TESTER upper_bound(const TYPE& x)
+	// DONE: 03 À TESTER upper_bound(const TYPE& x)
 	cellule* c = m_avant;
 	size_t k = m_avant->m_suiv.size();
 	for (int i = k - 1; i >= 0; i--) {
