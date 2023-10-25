@@ -11,6 +11,7 @@
 
 #ifndef SkipList_set2_h
 #define SkipList_set2_h
+#include <iostream>
 
 /////////////////////////////////////////////////////////////////
 // copieur et destructeur de liste
@@ -48,7 +49,17 @@ set<TYPE>::~set()
 template <typename TYPE>
 typename set<TYPE>::iterator set<TYPE>::find(const TYPE& x)
 {
-	// TODO: 04 find(const TYPE& x)
+	// DONE: 04 find(const TYPE& x)
+	// return it or m_avant->m_prec[0]
+
+	iterator it = lower_bound(x);
+	if (it != m_avant->m_prec[0] && *it == x) {
+		std::printf("\nValeur %d trouvé: %d\n", x, *it);
+		return it;
+	}
+
+	std::printf("\nValeur %d inexistante\n", x);
+	return m_avant->m_prec[0];
 }
 
 // lower_bound
@@ -102,6 +113,8 @@ template <typename TYPE>
 size_t set<TYPE>::erase(const TYPE& VAL)
 {
 	// TODO: 05 erase(const TYPE& VAL)
+	// find it
+	// erase(it);
 }
 
 // erase(it)

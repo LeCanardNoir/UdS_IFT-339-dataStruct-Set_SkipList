@@ -28,6 +28,10 @@ int main()
 	s2 = set(s);
 	afficher(cout, s2);
 
+	s2.find(1);
+	s2.find(8);
+	s2.find(99);
+
 
 	return 0;
 }
