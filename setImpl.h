@@ -113,8 +113,11 @@ size_t set<TYPE>::erase(const TYPE& VAL)
 	// find it
 	// erase(it);
 	iterator it = find(VAL);
-	if (it != m_avant->m_prec[0])
+	if (it != m_avant->m_prec[0]) {
 		erase(it);
+		return 0;
+	}
+	return 1;
 }
 
 // erase(it)
@@ -134,11 +137,13 @@ typename set<TYPE>::iterator set<TYPE>::erase(iterator it)
 			vPrec[i]->m_suiv[i] = vSuiv[i];
 			vSuiv[i]->m_prec[i] = vPrec[i];
 		}
+
+		delete it.m_pointeur;
+		it.m_pointeur = nullptr;
+		m_size--;
 	}
 
-	delete it.m_pointeur;
-	it.m_pointeur = nullptr;
-	it.m_pointeur = cell->m_suiv[0];
+	//it.m_pointeur = cell->m_suiv[0];
 	/*delete cell;
 	cell = nullptr;*/
 
