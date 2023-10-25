@@ -136,7 +136,11 @@ typename set<TYPE>::iterator set<TYPE>::erase(iterator it)
 		}
 	}
 
+	delete it.m_pointeur;
+	it.m_pointeur = nullptr;
 	it.m_pointeur = cell->m_suiv[0];
+	/*delete cell;
+	cell = nullptr;*/
 
 	return it;
 }
