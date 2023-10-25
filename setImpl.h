@@ -70,6 +70,7 @@ typename set<TYPE>::iterator set<TYPE>::lower_bound(const TYPE& t)
 
 		while (pasNull && valeurPlusPetite) {
 			c = c->m_suiv[i];
+			pasNull = (c->m_suiv[i])->m_contenu;
 		}
 	}
 	iterator it = iterator(c->m_suiv[0]);
