@@ -21,13 +21,10 @@ set<TYPE>::set(const set<TYPE>& src)
 {
 
 	iterator it = src.begin();
+	cellule* cellFin = m_avant->m_prec[0];
 	while (it != src.end()) {
-		// Complexité de O(n log n)
-		// TODO: 999 Améliorer l'insertion des éléments initiaux
-		// Peut étre amélioré en devenant O(n) en admettant que
-		// les éléments de la skip_list initiale sont déjé dans l'ordre,
-		// donc en ajoutant des éléments directement é la fin.
-		this->insert(*it);
+		//DONE : Optimisation d'insertion en O(n)
+		this->insert(cellFin, *it);
 		++it;
 	}
 }
