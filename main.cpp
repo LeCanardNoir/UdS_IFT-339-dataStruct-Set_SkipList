@@ -34,6 +34,8 @@ int main()
 	testFind(s2, 99);
 	testFind(s2, 50);
 
+	s2.erase(2);
+	afficher(cout, s2);
 
 	return 0;
 }

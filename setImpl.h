@@ -90,7 +90,7 @@ typename set<TYPE>::iterator set<TYPE>::lower_bound(const TYPE& t)
 template <typename TYPE>
 typename set<TYPE>::iterator set<TYPE>::upper_bound(const TYPE& x)
 {
-	// TODO: 03 upper_bound(const TYPE& x)
+	// TODO: 03 À TESTER upper_bound(const TYPE& x)
 	cellule* c = m_avant;
 	size_t k = m_avant->m_suiv.size();
 	for (int i = k - 1; i >= 0; i--) {
@@ -112,6 +112,9 @@ size_t set<TYPE>::erase(const TYPE& VAL)
 	// TODO: 05 erase(const TYPE& VAL)
 	// find it
 	// erase(it);
+	iterator it = find(VAL);
+	if (it != m_avant->m_prec[0])
+		erase(it);
 }
 
 // erase(it)
@@ -121,6 +124,21 @@ template <typename TYPE>
 typename set<TYPE>::iterator set<TYPE>::erase(iterator it)
 {
 	// TODO: 06 erase(iterator it) 
+	cellule* cell = it.m_pointeur;
+	if (it != m_avant->m_prec[0]) {
+		size_t k = cell->m_prec.size();
+		std::vector<cellule*> vPrec = cell->m_prec;
+		std::vector<cellule*> vSuiv = cell->m_suiv;
+
+		for (size_t i = 0; i < k; i++) {
+			vPrec[i]->m_suiv[i] = vSuiv[i];
+			vSuiv[i]->m_prec[i] = vPrec[i];
+		}
+	}
+
+	it.m_pointeur = cell->m_suiv[0];
+
+	return it;
 }
 
 #endif
