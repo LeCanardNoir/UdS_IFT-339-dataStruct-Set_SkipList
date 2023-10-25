@@ -53,12 +53,9 @@ typename set<TYPE>::iterator set<TYPE>::find(const TYPE& x)
 	// return it or m_avant->m_prec[0]
 
 	iterator it = lower_bound(x);
-	if (it != m_avant->m_prec[0] && *it == x) {
-		std::printf("\nValeur %d trouvé: %d\n", x, *it);
+	if (it != m_avant->m_prec[0] && *it == x) 
 		return it;
-	}
 
-	std::printf("\nValeur %d inexistante\n", x);
 	return m_avant->m_prec[0];
 }
 

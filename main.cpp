@@ -5,6 +5,7 @@
 #include <iostream>
 
 using namespace std;
+void testFind(set<int>, int);
 
 int main()
 {
@@ -28,10 +29,19 @@ int main()
 	s2 = set(s);
 	afficher(cout, s2);
 
-	s2.find(1);
-	s2.find(8);
-	s2.find(99);
+	testFind(s2, 1);
+	testFind(s2, 8);
+	testFind(s2, 99);
+	testFind(s2, 50);
 
 
 	return 0;
+}
+
+void testFind(set<int> s, int x) {
+	auto it = s.find(x);
+	if (it != s.end() && *it == x)
+		std::printf("\nValeur %d trouvé: %d\n", x, *it);
+	else
+		std::printf("\nValeur %d inexistante\n", x);
 }
