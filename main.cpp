@@ -14,6 +14,11 @@ int main()
 	s.insert(3);
 	s.insert(4);
 	s.insert(7);
+	s.insert(1);
+	s.insert(25);
+	s.insert(10);
+	s.insert(9);
+	s.insert(50);
 	afficher(cout, s);
 
 	set<int> s2;
