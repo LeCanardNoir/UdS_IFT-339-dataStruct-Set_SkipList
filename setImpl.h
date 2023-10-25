@@ -21,13 +21,10 @@ set<TYPE>::set(const set<TYPE>& src)
 {
 
 	iterator it = src.begin();
+	cellule* cellFin = m_avant->m_prec[0];
 	while (it != src.end()) {
-		// Complexité de O(n log n)
-		// TODO: 999 Améliorer l'insertion des éléments initiaux
-		// Peut étre amélioré en devenant O(n) en admettant que
-		// les éléments de la skip_list initiale sont déjé dans l'ordre,
-		// donc en ajoutant des éléments directement é la fin.
-		this->insert(*it);
+		//DONE : Optimisation d'insertion en O(n)
+		this->insert(cellFin, *it);
 		++it;
 	}
 }
@@ -89,7 +86,7 @@ typename set<TYPE>::iterator set<TYPE>::lower_bound(const TYPE& t)
 template <typename TYPE>
 typename set<TYPE>::iterator set<TYPE>::upper_bound(const TYPE& x)
 {
-	// TODO: 03 À TESTER upper_bound(const TYPE& x)
+	// DONE: 03 À TESTER upper_bound(const TYPE& x)
 	cellule* c = m_avant;
 	size_t k = m_avant->m_suiv.size();
 	for (int i = k - 1; i >= 0; i--) {
@@ -142,10 +139,18 @@ typename set<TYPE>::iterator set<TYPE>::erase(iterator it)
 		m_size--;
 	}
 
-	//it.m_pointeur = cell->m_suiv[0];
-	/*delete cell;
-	cell = nullptr;*/
 
+	//Suppression des étages inutiles
+	size_t nombresDeNiveaux = m_avant->m_suiv.size();
+	cellule* cellFin = m_avant->m_prec[0];
+
+	while (nombresDeNiveaux > 1 && m_avant->m_suiv[nombresDeNiveaux - 1] == cellFin) {
+		nombresDeNiveaux--;
+	}
+
+	m_avant->m_suiv.resize(nombresDeNiveaux);
+	cellFin->m_prec.resize(nombresDeNiveaux);
+	
 	return it;
 }
 

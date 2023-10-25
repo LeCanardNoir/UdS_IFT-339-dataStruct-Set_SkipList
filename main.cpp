@@ -40,6 +40,12 @@ int main()
 	s2.erase(50);
 	afficher(cout, s2);
 
+	s2.erase(9);
+	afficher(cout, s2);
+
+	s2.erase(3);
+	afficher(cout, s2);
+
 	return 0;
 }
 
