@@ -139,10 +139,18 @@ typename set<TYPE>::iterator set<TYPE>::erase(iterator it)
 		m_size--;
 	}
 
-	//it.m_pointeur = cell->m_suiv[0];
-	/*delete cell;
-	cell = nullptr;*/
 
+	//Suppression des étages inutiles
+	size_t nombresDeNiveaux = m_avant->m_suiv.size();
+	cellule* cellFin = m_avant->m_prec[0];
+
+	while (nombresDeNiveaux > 1 && m_avant->m_suiv[nombresDeNiveaux - 1] == cellFin) {
+		nombresDeNiveaux--;
+	}
+
+	m_avant->m_suiv.resize(nombresDeNiveaux);
+	cellFin->m_prec.resize(nombresDeNiveaux);
+	
 	return it;
 }
 
