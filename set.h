@@ -100,9 +100,9 @@ public:
     bool empty()const;
 
     size_t count(const TYPE&)const;
-    iterator find(const TYPE&);
-    iterator lower_bound(const TYPE&);
-    iterator upper_bound(const TYPE&);
+    iterator find(const TYPE&)const;
+    iterator lower_bound(const TYPE&)const;
+    iterator upper_bound(const TYPE&)const;
 
     std::pair<iterator, bool> insert(const TYPE&);
     iterator insert(iterator, const TYPE&);

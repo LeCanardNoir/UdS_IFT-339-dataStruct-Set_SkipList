@@ -43,7 +43,7 @@ set<TYPE>::~set()
 // localise un élément, retourne la fin si absent
 
 template <typename TYPE>
-typename set<TYPE>::iterator set<TYPE>::find(const TYPE& x)
+typename set<TYPE>::iterator set<TYPE>::find(const TYPE& x) const
 {
 	// DONE: 04 find(const TYPE& x)
 	// return it or m_avant->m_prec[0]
@@ -60,7 +60,7 @@ typename set<TYPE>::iterator set<TYPE>::find(const TYPE& x)
 // pas plus petit que celui recu en parametre
 
 template <typename TYPE>
-typename set<TYPE>::iterator set<TYPE>::lower_bound(const TYPE& t)
+typename set<TYPE>::iterator set<TYPE>::lower_bound(const TYPE& t) const
 {
 	cellule* c = m_avant;
 	size_t k = m_avant->m_suiv.size();
@@ -84,7 +84,7 @@ typename set<TYPE>::iterator set<TYPE>::lower_bound(const TYPE& t)
 }
 
 template <typename TYPE>
-typename set<TYPE>::iterator set<TYPE>::upper_bound(const TYPE& x)
+typename set<TYPE>::iterator set<TYPE>::upper_bound(const TYPE& x) const
 {
 	// DONE: 03 À TESTER upper_bound(const TYPE& x)
 	cellule* c = m_avant;
